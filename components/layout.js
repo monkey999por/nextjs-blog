@@ -1,13 +1,12 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from './layout.module.css';
+import Head from "next/head";
+import Link from "next/link";
+import styles from "./layout.module.css";
 import utilStyles from '../styles/utils.module.css';
-import Link from 'next/link';
+import Image from "next/image";
 
-const name = 'Your Name';
-export const siteTitle = 'Next.js Sample Website';
-
-export default function Layout({ children, home }) {
+const name = 'monkey999';
+export const siteTitle = 'Next.js sample site';
+export default function Layout({ children, home }){
   return (
     <div className={styles.container}>
       <Head>
@@ -60,14 +59,20 @@ export default function Layout({ children, home }) {
           </>
         )}
       </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
+      <main>
+        {children}
+      </main>
+      {
+        !home && (
+          <div className={styles.backToHome}>
+            <Link href="/">
+              <a>
+                Back to Home</a></Link>
+
+          </div>
+        )
+      }
     </div>
+
   );
-}
+};
