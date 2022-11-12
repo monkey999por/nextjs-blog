@@ -7,6 +7,8 @@ import Link from 'next/link';
 
 export async function getStaticProps(){
   const allPostsData = getSortedPostsData();
+  const a = new Array().forEach;
+  
 return {
     props : {
       allPostsData,
