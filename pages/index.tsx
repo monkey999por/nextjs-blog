@@ -5,6 +5,7 @@ import { getSortedPostsData } from "../lib/posts";
 import Date from "../components/date";
 import Link from "next/link";
 import React from "react";
+import { NextPage } from "next";
 import ErrorBoundary from "../components/ErrorBoundary";
 
 export async function getStaticProps() {
@@ -28,10 +29,6 @@ const AlwaysSuspend: React.VFC = () => {
   throw sleep(1000);
 };
 
-const ErrorComponent = (): JSX.Element => {
-throw new Error("throw error");
-}
-
 // デフォルトでエクスポートしたものがページに反映される
 export default function Home({ allPostsData }) {
   return (
@@ -39,9 +36,9 @@ export default function Home({ allPostsData }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <ErrorBoundary>
-        <ErrorComponent></ErrorComponent>
-      </ErrorBoundary>
+      
+      
+      
       <AlwaysSuspend/>
       <section className={utilStyles.headingMd}>
         <p>[Your Self Introduction]</p>
@@ -52,7 +49,7 @@ export default function Home({ allPostsData }) {
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
-        {console.log(allPostsData)}
+        
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
